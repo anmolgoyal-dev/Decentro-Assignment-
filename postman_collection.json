@@ -1,0 +1,298 @@
+{
+  "info": {
+    "name": "Expense Sharing Service API",
+    "description": "Postman Collection for Decentro SDE Assignment - Expense Sharing Service with Smart Settlement Suggestions.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8000",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Health",
+      "item": [
+        {
+          "name": "Health Check",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/health",
+              "host": ["{{baseUrl}}"],
+              "path": ["health"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "1. Users",
+      "item": [
+        {
+          "name": "Create User - Mohit",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Mohit\",\n  \"email\": \"mohit@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Create User - Rahul",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Rahul\",\n  \"email\": \"rahul@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "Create User - Ankit",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ankit\",\n  \"email\": \"ankit@example.com\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            }
+          }
+        },
+        {
+          "name": "List All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/users",
+              "host": ["{{baseUrl}}"],
+              "path": ["users"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "2. Groups",
+      "item": [
+        {
+          "name": "Create Group - Goa Trip",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Goa Trip\",\n  \"description\": \"Summer Vacation Trip\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups"]
+            }
+          }
+        },
+        {
+          "name": "Add Member 1 (Mohit)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 1\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/1/members",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", "1", "members"]
+            }
+          }
+        },
+        {
+          "name": "Add Member 2 (Rahul)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 2\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/1/members",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", "1", "members"]
+            }
+          }
+        },
+        {
+          "name": "Add Member 3 (Ankit)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"user_id\": 3\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/groups/1/members",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", "1", "members"]
+            }
+          }
+        },
+        {
+          "name": "List Group Members",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/1/members",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", "1", "members"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "3. Expenses",
+      "item": [
+        {
+          "name": "Add Expense - Dinner ₹1200 (Equal Split)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"group_id\": 1,\n  \"paid_by\": 1,\n  \"amount\": 1200,\n  \"description\": \"Dinner\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["expenses"]
+            }
+          }
+        },
+        {
+          "name": "List Group Expenses",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/1/expenses",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", "1", "expenses"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "4. Balances",
+      "item": [
+        {
+          "name": "Get Balances (PDF Format)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/balances",
+              "host": ["{{baseUrl}}"],
+              "path": ["balances"]
+            }
+          }
+        },
+        {
+          "name": "Get Group Balances",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/1/balances",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", "1", "balances"]
+            }
+          }
+        },
+        {
+          "name": "Get Detailed Balances",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/balances/detailed",
+              "host": ["{{baseUrl}}"],
+              "path": ["balances", "detailed"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "5. Settlements & Smart Suggestions",
+      "item": [
+        {
+          "name": "Get Smart Settlement Suggestions (Min-Cash-Flow)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/groups/1/settlements/suggestions",
+              "host": ["{{baseUrl}}"],
+              "path": ["groups", "1", "settlements", "suggestions"]
+            }
+          }
+        },
+        {
+          "name": "Record Direct Settlement (Rahul pays Mohit ₹400)",
+          "request": {
+            "method": "POST",
+            "header": [{"key": "Content-Type", "value": "application/json"}],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"payer_id\": 2,\n  \"payee_id\": 1,\n  \"amount\": 400,\n  \"group_id\": 1,\n  \"notes\": \"UPI payment\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/settlements",
+              "host": ["{{baseUrl}}"],
+              "path": ["settlements"]
+            }
+          }
+        },
+        {
+          "name": "List Recorded Settlements",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/settlements",
+              "host": ["{{baseUrl}}"],
+              "path": ["settlements"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
